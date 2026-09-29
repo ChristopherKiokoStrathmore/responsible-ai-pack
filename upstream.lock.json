@@ -1,0 +1,40 @@
+{
+  "telco": {
+    "repository": "https://github.com/ChristopherKiokoStrathmore/telco-churn-nba-engine",
+    "commit": "21f6115931f4358ebc7cc87d9ba1f4d87fd015aa",
+    "archive_url": "https://codeload.github.com/ChristopherKiokoStrathmore/telco-churn-nba-engine/tar.gz/21f6115931f4358ebc7cc87d9ba1f4d87fd015aa",
+    "extract_prefix": "telco-churn-nba-engine-21f6115931f4358ebc7cc87d9ba1f4d87fd015aa",
+    "dest": "telco-churn-nba-engine",
+    "files": {
+      "artifacts/churn_model.joblib": "fe1cd3c3ea69565c133f9964744c9d4f5d55908ef883908cfb380f1fc37d3509",
+      "artifacts/feature_schema.json": "88675f1ada3a0ed5c3256e534b56c0812f853b3524e1bdcc652b5164d3167d4a",
+      "artifacts/scoring_bundle.joblib": "f4a8689a99e5596774846fb115a693f1fbe7bd46f4bcd555b8c2d855ce767bdf",
+      "data/SHA256SUMS": "c267082651748d75759a1df099f20a2a0c111e9be5139f1a0a7590b397033d80",
+      "data/SOURCE.txt": "116794b77e30dc60115be814e6ae24b1b648aa871c7d6ed938e72ace5ad4a9f2",
+      "data/Telco-Customer-Churn.csv": "16320c9c1ec72448db59aa0a26a0b95401046bef5d02fd3aeb906448e3055e91",
+      "reports/metrics.json": "aca88714f0910ea75930075dfdc93dab6482f6d19d232f8467b7f24a4fcc26b0",
+      "src/telco_nba/__init__.py": "19aa7d78a9d6039b0da6135b7d9fe859533ce933d1fbe4549776f24d9aa1f8d4",
+      "src/telco_nba/data.py": "cd4ab8f6875236ed12c832ced0ba4f191a2b818dd148ec01682f7c53f5457d44",
+      "src/telco_nba/explain.py": "5f9ffd1d3129a60fd8c78275fe053568d91c31f4f4bf7e0b011d15176b41cd11",
+      "src/telco_nba/metrics.py": "337b0344ad5809fd19661ba2b7c07a06d5359d33dfae788e739725e87b54f709",
+      "src/telco_nba/model_io.py": "4111ff9aeb70d2c63c4dab093dba05dac68ff796c244b7eeda932f4f87fe060e",
+      "src/telco_nba/paths.py": "1c40147796a813d7aaf509719e7ca8e175f59f8ce05b808999aad67c346ccc02",
+      "src/telco_nba/pipeline.py": "384b6669603489ce0b3ea87f1132adbbd5657eeafe50e349d8eda2070b9d04a8"
+    }
+  },
+  "multihead": {
+    "repository": "https://github.com/ChristopherKiokoStrathmore/MULTI-HEAD-",
+    "commit": "809bccd61077898849c428f37521fa198f7c7bf6",
+    "raw_base": "https://raw.githubusercontent.com/ChristopherKiokoStrathmore/MULTI-HEAD-/809bccd61077898849c428f37521fa198f7c7bf6/",
+    "dest": "MULTI-HEAD",
+    "files": {
+      ".github/workflows/ci.yml": "387be4f951c35e9a315688b1cec56540a7c86220ef604fa3e024ebad96dc2fc2",
+      "README.md": "a6737a496d4ad2d7e928f92e0931565d59bcfab65bef9182a72514a0147fd044",
+      "eval/README.md": "3b669e6ea2f201d6dbd76f707731c067045d724db7048c68e1b841f12baea9b8",
+      "eval/gates.smoke.json": "708ac1b145d98d24a293340a273006c112ffd213112250ba024819a671cc73eb",
+      "lib/trust.ts": "5c020ddf2a85340054aa634f3e081c87356268a478cb66f3840e09e4ecb89c75",
+      "lib/types.ts": "cac8716e9eff700ed50e5c057255a41be6f2c86ed3d991ac590b3c6df33539f3",
+      "package.json": "6f6b02765d1ea28b718bb38e5b22c8f7d87bda1de686a6537cac41e07d54f3b6"
+    }
+  }
+}
