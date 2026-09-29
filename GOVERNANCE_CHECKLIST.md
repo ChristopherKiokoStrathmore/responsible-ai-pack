@@ -1,13 +1,13 @@
 # AI governance checklist
 
-Personal checklist for the churn model in this repo, mapped to the NIST AI Risk Management Framework functions Govern, Map, Measure, and Manage. This is a personal framework, not an employer policy.
+Checklist for the churn model in this repo, mapped to the NIST AI Risk Management Framework functions Govern, Map, Measure, and Manage. Independent portfolio project built on public data.
 
 If a later project used personal data of people in Kenya, the statute to read is the Kenya Data Protection Act 2019. This page names that Act. It does not interpret it, and it does not claim compliance.
 
 ## Govern
 
 - [x] The model card names the artifact, the commit, and the person whose portfolio this is.
-- [x] The README states that the pack is not an employer policy and uses the public IBM sample only.
+- [x] The README states the data and scope and that the pack uses the public IBM sample only.
 - [x] Kenya Data Protection Act 2019 is named, with no section numbers and no compliance claim.
 - [ ] A real deployment still needs an accountable owner inside the organisation that would act on a score. This repo cannot appoint one.
 

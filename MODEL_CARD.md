@@ -11,9 +11,7 @@ datasets:
 
 # Model card: telco churn gradient boosting
 
-Governance write-up for the churn model saved in [telco-churn-nba-engine](https://github.com/ChristopherKiokoStrathmore/telco-churn-nba-engine) at commit `21f6115931f4358ebc7cc87d9ba1f4d87fd015aa`. This repo loads that artifact. It does not train a replacement.
-
-This is a personal framework, not an employer policy.
+Governance write-up for the churn model saved in [telco-churn-nba-engine](https://github.com/ChristopherKiokoStrathmore/telco-churn-nba-engine) at commit `21f6115931f4358ebc7cc87d9ba1f4d87fd015aa`. This repo loads that artifact. It does not train a replacement. Independent portfolio project built on public data.
 
 ## Model details
 

@@ -9,7 +9,7 @@ tags:
 
 This card covers the model behind [MULTI-HEAD-](https://github.com/ChristopherKiokoStrathmore/MULTI-HEAD-) at commit `809bccd61077898849c428f37521fa198f7c7bf6`. Every figure below is copied from a file at that commit. If the repo does not state a fact, this card says so.
 
-This is a personal framework, not an employer policy. This pack does not host the weights and did not score the live API.
+Independent portfolio project built on public data. This pack does not host the weights and did not score the live API.
 
 ## Model details
 
@@ -56,11 +56,11 @@ The numeric thresholds that are in the repo:
 | Smoke `maxFalseEmergencyRate` | 0.99 | same file |
 | Smoke `minScoredRows` | 1 | same file |
 
-`eval/README.md` also says the abstain sweep it prints uses thresholds 0.40–0.80, and that on a 10-class issue head a top softmax around 0.5 is often not enough to trust. Those are instructions and a caution, not measured quality.
+`eval/README.md` also says the abstain sweep it prints uses thresholds 0.40-0.80, and that on a 10-class issue head a top softmax around 0.5 is often not enough to trust. Those are instructions and a caution, not measured quality.
 
 The same README says smoke floors fail on a dead API, an incomplete score, or a total urgency collapse. `minEmergencyRecall` 0.01 fails only if gold emergencies exist and recall is 0. That is not a quality bar this card can adopt.
 
-Operational figures the root README does state, as product behavior rather than accuracy: CSV rows go out in chunks of 20; timeouts are 120s for `/predict` and 180s for a `/predict_batch` chunk; a cold start is described as 20–40 seconds in the root README and about 40–120 seconds in the eval README's CI note.
+Operational figures the root README does state, as product behavior rather than accuracy: CSV rows go out in chunks of 20; timeouts are 120s for `/predict` and 180s for a `/predict_batch` chunk; a cold start is described as 20-40 seconds in the root README and about 40-120 seconds in the eval README's CI note.
 
 Calibration, slice metrics, and confusion counts on gold data: not documented in source repo.
 

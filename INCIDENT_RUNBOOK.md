@@ -1,6 +1,6 @@
 # Incident runbook
 
-Use this when a gated churn metric is below its floor. The floors are ROC-AUC 0.82, PR-AUC 0.63, and top-decile lift 2.60, from `gates.yaml`. This is a personal framework, not an employer policy. This repo has no live queue and no on-call rota.
+Use this when a gated churn metric is below its floor. The floors are ROC-AUC 0.82, PR-AUC 0.63, and top-decile lift 2.60, from `gates.yaml`. Independent portfolio project built on public data. This repo has no live queue and no on-call rota.
 
 ## Detection
 

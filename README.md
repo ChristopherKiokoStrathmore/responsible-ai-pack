@@ -1,12 +1,18 @@
 # Responsible AI pack
 
-A personal portfolio project that writes the governance around a churn model that already exists, and a model card for a second model whose weights are not in this repository.
+A churn model is only useful if people can trust it. What does it rely on, is it fair across customer groups, and what happens when it degrades?
 
-This is a personal framework, not an employer policy. It uses the public IBM Telco Customer Churn table via the upstream repo. It does not contain employer data.
+This repo adds governance to the churn model from [telco-churn-nba-engine](https://github.com/ChristopherKiokoStrathmore/telco-churn-nba-engine) (pinned commit): TreeSHAP explanations, Fairlearn fairness checks, PSI drift baseline, model cards, a NIST AI RMF checklist, monitoring plan, incident runbook and CI metric gates. Part of an independent portfolio series on telecom customer analytics, built alongside my MSc in Data Science. Structured using CRISP-DM.
 
-The figures below are copied from `reports/` or from a file fetched at a pinned commit. `tests/test_docs.py` checks that.
+## Key results
 
-## Artefacts
+- Held-out metrics recomputed and matched upstream at six decimals: ROC-AUC 0.846001, PR-AUC 0.656070, top-decile lift 2.806733.
+- CI gates: fails the build below ROC-AUC 0.82, PR-AUC 0.63 or lift 2.60. Current run passes.
+- Fairness (demographic parity difference): gender 0.030582, SeniorCitizen 0.223259, flagged for review.
+
+## Business Understanding
+
+The score is useful only if a reviewer can see what the model relies on, how it treats the groups the table can measure, and what to do when a gated metric drops. The churn model is trained and saved elsewhere. This repo starts after that save.
 
 | File | What it is |
 | --- | --- |
@@ -23,31 +29,41 @@ The figures below are copied from `reports/` or from a file fetched at a pinned 
 | `INCIDENT_RUNBOOK.md` | What to do when a gated metric is below its floor. |
 | `upstream.lock.json` | Commit SHAs and file SHA-256s for both source repos. |
 
-## Where this sits in a model lifecycle
-
-The churn model is trained and saved elsewhere. This repo starts after that save.
-
-1. Pin the artifact and the data by commit and checksum (`upstream.lock.json`, `scripts/fetch_upstream.py`).
-2. Write the model card before anyone treats the score as a decision (`MODEL_CARD.md`).
-3. Recompute held-out metrics from the saved file, and refuse the candidate if a metric is below `gates.yaml`.
-4. Attach global and local explanations for a reviewer (`reports/shap/`).
-5. Measure the group fields the table actually has (`reports/fairness.json`) before widening use.
-6. On a later batch, rerun the same metrics and the PSI script. The training split stays the drift reference.
-7. If a gate fails, follow `INCIDENT_RUNBOOK.md`: stop, keep the last passing artifact, tell the person who would act on a score, and write a postmortem.
-
-The multi-head card is the same idea for a model this repo cannot load. The card records the gap instead of filling it.
-
-## Churn model pin
+## Data Understanding
 
 Repository: [telco-churn-nba-engine](https://github.com/ChristopherKiokoStrathmore/telco-churn-nba-engine), commit `21f6115931f4358ebc7cc87d9ba1f4d87fd015aa`.
 
 That repo has no `pyproject.toml` or `setup.py`, so this pack does not install it as a git dependency. `scripts/fetch_upstream.py` downloads the archive at that commit and checks the SHA-256 of each file in the lock, including `artifacts/churn_model.joblib`, `artifacts/scoring_bundle.joblib`, the CSV, and `reports/metrics.json`.
 
-The split is their function `telco_nba.pipeline.split_customers`: seed 42, test size 0.250000, stratified on `Churn`. Recomputed counts are 5282 train rows and 1761 test rows. The first held-out row with numeric `TotalCharges` is `5343-SGUBI`, the example id stored in the upstream metrics file.
-
 The upstream file records 7043 rows, 1869 with Churn Yes, rate 0.265370, and CSV SHA-256 `16320c9c1ec72448db59aa0a26a0b95401046bef5d02fd3aeb906448e3055e91`. It records the IBM repository license as Apache-2.0 for the code pattern, and says that repository does not state a separate license for the CSV.
 
-## Held-out metrics
+`gender` and `SeniorCitizen` are columns in that table and inputs to the model. The CSV has no race, ethnicity, region, language, or disability column.
+
+## Data Preparation
+
+The split is the upstream function `telco_nba.pipeline.split_customers`: seed 42, test size 0.250000, stratified on `Churn`. Recomputed counts are 5282 train rows and 1761 test rows. The first held-out row with numeric `TotalCharges` is `5343-SGUBI`, the example id stored in the upstream metrics file.
+
+This pack does not retrain and does not refit that split. Blank `TotalCharges` cells stay missing values. Median imputation sits inside the saved pipeline.
+
+## Modeling
+
+Not in scope. This repo reuses the pinned gradient-boosting churn model and does not train a replacement. A logistic regression and a dummy prior are stored in the same upstream bundle as comparison models. They are not the scoring artifact. The upstream file sets `scoring_model` to `gradient_boosting`.
+
+### Multi-head card
+
+The multi-head card is the same idea for a model this repo cannot load. The card records the gap instead of filling it.
+
+`MODEL_CARD_MULTIHEAD.md` is limited to commit `809bccd61077898849c428f37521fa198f7c7bf6`.
+
+Documented there, with links: a three-head demo (issue, sentiment, urgency), issue abstain threshold 0.6, smoke floors `minEmergencyRecall` 0.01 and `maxFalseEmergencyRate` 0.99, and the eval README's warning that those floors are not model quality.
+
+Not documented in source repo: weights, architecture, training data, and any gold accuracy, F1, emergency recall, or false-emergency rate. This pack does not invent them and does not call the live API to manufacture a number.
+
+## Evaluation
+
+The figures in this phase are copied from `reports/` or from a file fetched at a pinned commit. `tests/test_docs.py` checks that.
+
+### Held-out metrics
 
 Scoring model: gradient boosting. Positive class: Churn Yes. Metrics use `telco_nba.metrics.classification_metrics` on the saved pipelines. `matches_upstream_metrics_at_six_decimals` is true, against [upstream `reports/metrics.json`](https://github.com/ChristopherKiokoStrathmore/telco-churn-nba-engine/blob/21f6115931f4358ebc7cc87d9ba1f4d87fd015aa/reports/metrics.json).
 
@@ -61,7 +77,7 @@ Top-decile lift follows that file: k = floor(n_test / 10), with tied scores shar
 
 Logistic regression is higher on ROC-AUC. Gradient boosting is higher on PR-AUC and on top-decile lift. The scoring file stays gradient boosting, which is the upstream `scoring_model`.
 
-## Fairness
+### Fairness
 
 `reports/fairness.json` is a Fairlearn `MetricFrame` on the held-out rows. Hard labels are the saved pipeline's `predict()`: positive when P(Churn=Yes) > 0.5. ROC-AUC uses the probability. Demographic parity difference is the absolute gap between the largest and smallest group selection rates. Equalized odds difference is the larger of the true-positive-rate gap and the false-positive-rate gap.
 
@@ -82,7 +98,7 @@ SeniorCitizen: demographic parity difference 0.223259, equalized odds difference
 
 These are measurements on one split and one cutoff. They are not a CI gate and not a fairness certificate. A disparity budget needs an owner this pack does not have.
 
-## SHAP
+### SHAP
 
 TreeSHAP (`shap.TreeExplainer` 0.47.2) on the gradient-boosting classifier, in decision-function log-odds. On all 1761 held-out rows the values plus the base value -1.556380 rebuild `decision_function` with max absolute error 0.000000.
 
@@ -108,11 +124,15 @@ Local plots add the signed values back into the original field and label the bar
 
 ![Local SHAP for 5787-KXGIY](reports/shap/local_5787-KXGIY.png)
 
-## Drift baseline
+### Drift baseline
 
 PSI on this stratified split is small. That is a check that the function runs, not evidence about a later month. The review trigger is 0.250000. Nothing in `reports/drift_psi.json` is above it (`n_above_trigger` is 0). The largest value is MonthlyCharges at 0.012474. The full table is in `MONITORING.md`.
 
-## Gates
+## Deployment
+
+On a later batch, rerun the same metrics and the PSI script. The training split stays the drift reference. If a gate fails, follow `INCIDENT_RUNBOOK.md`: stop, keep the last passing artifact, tell the person who would act on a score, and write a postmortem. What to watch is written in `MONITORING.md`.
+
+### Gates
 
 `gates.yaml` floors, and how they were chosen:
 
@@ -128,15 +148,7 @@ The margin is wide enough that six-decimal noise does not fail CI, and narrow en
 
 `reports/gate_check.json` records a pass on the recomputed values.
 
-## Multi-head card
-
-`MODEL_CARD_MULTIHEAD.md` is limited to commit `809bccd61077898849c428f37521fa198f7c7bf6`.
-
-Documented there, with links: a three-head demo (issue, sentiment, urgency), issue abstain threshold 0.6, smoke floors `minEmergencyRecall` 0.01 and `maxFalseEmergencyRate` 0.99, and the eval README's warning that those floors are not model quality.
-
-Not documented in source repo: weights, architecture, training data, and any gold accuracy, F1, emergency recall, or false-emergency rate. This pack does not invent them and does not call the live API to manufacture a number.
-
-## Run
+### Run
 
 ```bash
 python -m venv .venv
@@ -150,6 +162,10 @@ python scripts/check_gates.py
 
 CI uses Python 3.12, installs `requirements.txt` (scikit-learn 1.5.2, shap 0.47.2, fairlearn 0.12.0), fetches the lock, runs pytest, and reruns `scripts/check_gates.py`.
 
+## Data and scope
+
+Independent portfolio project built on public data. The churn table is the public IBM Telco Customer Churn sample, pinned from the upstream repo.
+
 ## Limitations
 
 - The churn table is IBM's US sample, 7043 rows. It is not Kenyan data and it is not an operator extract. Quoting these metrics as local network performance would be wrong.
@@ -161,4 +177,3 @@ CI uses Python 3.12, installs `requirements.txt` (scikit-learn 1.5.2, shap 0.47.
 - There is one holdout and no interval around the fairness gaps.
 - The multi-head model cannot be explained or rescored from this repo. Its quality metrics are not documented in source repo.
 - The Kenya Data Protection Act 2019 is named in `GOVERNANCE_CHECKLIST.md` and nowhere interpreted.
-- This is a personal framework, not an employer policy.

@@ -1,6 +1,6 @@
 # Monitoring
 
-What to watch if the pinned churn model were scored on a later batch of the same columns. This is a personal framework, not an employer policy. The numbers below are the committed baseline on the IBM sample, not a live feed.
+What to watch if the pinned churn model were scored on a later batch of the same columns. Independent portfolio project built on public data. The numbers below are the committed baseline on the IBM sample, not a live feed.
 
 ## Performance
 
