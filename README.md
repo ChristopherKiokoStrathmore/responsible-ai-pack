@@ -1,6 +1,6 @@
 # Responsible AI pack
 
-A personal portfolio project for Chris Nguu. It writes the governance around a churn model that already exists, and a model card for a second model whose weights are not in this repository.
+A personal portfolio project that writes the governance around a churn model that already exists, and a model card for a second model whose weights are not in this repository.
 
 This is a personal framework, not an employer policy. It uses the public IBM Telco Customer Churn table via the upstream repo. It does not contain employer data.
 
