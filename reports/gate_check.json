@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "failures": [],
+  "metrics": [
+    {
+      "metric": "roc_auc",
+      "value": 0.846001,
+      "gate": 0.820000,
+      "passed": true
+    },
+    {
+      "metric": "pr_auc",
+      "value": 0.656070,
+      "gate": 0.630000,
+      "passed": true
+    },
+    {
+      "metric": "top_decile_lift",
+      "value": 2.806733,
+      "gate": 2.600000,
+      "passed": true
+    }
+  ],
+  "upstream_commit": "21f6115931f4358ebc7cc87d9ba1f4d87fd015aa",
+  "scoring_model": "gradient_boosting",
+  "matches_upstream_metrics_at_six_decimals": true
+}

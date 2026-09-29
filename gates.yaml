@@ -1,0 +1,17 @@
+# Floors for the pinned gradient-boosting churn model.
+# Chosen from reports/metrics_recomputed.json, not from a second training run.
+# minimum = floor_to_decimals(recomputed_value - margin, round_down_decimals)
+# The gap is there so six-decimal noise does not fail CI, and a broken
+# artifact or a real drop does. These are not confidence intervals.
+upstream_commit: 21f6115931f4358ebc7cc87d9ba1f4d87fd015aa
+scoring_model: gradient_boosting
+metrics_report: reports/metrics_recomputed.json
+round_down_decimals: 2
+margins:
+  roc_auc: 0.02
+  pr_auc: 0.02
+  top_decile_lift: 0.20
+gates:
+  roc_auc: 0.82
+  pr_auc: 0.63
+  top_decile_lift: 2.60
