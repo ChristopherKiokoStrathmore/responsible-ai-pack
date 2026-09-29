@@ -1,0 +1,134 @@
+{
+  "upstream_repository": "https://github.com/ChristopherKiokoStrathmore/telco-churn-nba-engine",
+  "upstream_commit": "21f6115931f4358ebc7cc87d9ba1f4d87fd015aa",
+  "upstream_metrics_file": "reports/metrics.json",
+  "upstream_metrics_sha256": "aca88714f0910ea75930075dfdc93dab6482f6d19d232f8467b7f24a4fcc26b0",
+  "scoring_model_file": "artifacts/churn_model.joblib",
+  "scoring_model_sha256": "fe1cd3c3ea69565c133f9964744c9d4f5d55908ef883908cfb380f1fc37d3509",
+  "split_function": "telco_nba.pipeline.split_customers",
+  "split": {
+    "seed": 42,
+    "test_size": 0.250000,
+    "stratify": "Churn",
+    "n_train": 5282,
+    "n_test": 1761,
+    "train_churn_rate": 0.265430,
+    "test_churn_rate": 0.265190,
+    "train_churn_yes": 1402,
+    "test_churn_yes": 467,
+    "example_customer_id": "5343-SGUBI",
+    "example_customer_historical_churn": "No",
+    "example_customer_rule": "first held-out row whose TotalCharges is numeric",
+    "test_customer_id_sha256": "6366ef14aae57fff0586c36ff32f91c83c9017e196adf77a0f6cad3d01141141"
+  },
+  "scoring_model": "gradient_boosting",
+  "positive_label": "Yes",
+  "label_column_excluded_from_features": true,
+  "feature_order": [
+    "gender",
+    "SeniorCitizen",
+    "Partner",
+    "Dependents",
+    "tenure",
+    "PhoneService",
+    "MultipleLines",
+    "InternetService",
+    "OnlineSecurity",
+    "OnlineBackup",
+    "DeviceProtection",
+    "TechSupport",
+    "StreamingTV",
+    "StreamingMovies",
+    "Contract",
+    "PaperlessBilling",
+    "PaymentMethod",
+    "MonthlyCharges",
+    "TotalCharges"
+  ],
+  "inputs_include_gender": true,
+  "inputs_include_SeniorCitizen": true,
+  "churn_models": {
+    "dummy_prior": {
+      "roc_auc": 0.500000,
+      "pr_auc": 0.265190,
+      "top_decile_lift": 1.000000,
+      "top_decile_positive_rate": 0.265190,
+      "top_decile_k": 176,
+      "base_rate": 0.265190
+    },
+    "logistic_regression": {
+      "roc_auc": 0.846490,
+      "pr_auc": 0.638090,
+      "top_decile_lift": 2.785308,
+      "top_decile_positive_rate": 0.738636,
+      "top_decile_k": 176,
+      "base_rate": 0.265190
+    },
+    "gradient_boosting": {
+      "roc_auc": 0.846001,
+      "pr_auc": 0.656070,
+      "top_decile_lift": 2.806733,
+      "top_decile_positive_rate": 0.744318,
+      "top_decile_k": 176,
+      "base_rate": 0.265190
+    }
+  },
+  "upstream_comparison": {
+    "dummy_prior": {
+      "recomputed": {
+        "roc_auc": "0.500000",
+        "pr_auc": "0.265190",
+        "top_decile_lift": "1.000000",
+        "top_decile_positive_rate": "0.265190",
+        "base_rate": "0.265190"
+      },
+      "upstream": {
+        "roc_auc": "0.500000",
+        "pr_auc": "0.265190",
+        "top_decile_lift": "1.000000",
+        "top_decile_positive_rate": "0.265190",
+        "base_rate": "0.265190"
+      },
+      "equal": true
+    },
+    "logistic_regression": {
+      "recomputed": {
+        "roc_auc": "0.846490",
+        "pr_auc": "0.638090",
+        "top_decile_lift": "2.785308",
+        "top_decile_positive_rate": "0.738636",
+        "base_rate": "0.265190"
+      },
+      "upstream": {
+        "roc_auc": "0.846490",
+        "pr_auc": "0.638090",
+        "top_decile_lift": "2.785308",
+        "top_decile_positive_rate": "0.738636",
+        "base_rate": "0.265190"
+      },
+      "equal": true
+    },
+    "gradient_boosting": {
+      "recomputed": {
+        "roc_auc": "0.846001",
+        "pr_auc": "0.656070",
+        "top_decile_lift": "2.806733",
+        "top_decile_positive_rate": "0.744318",
+        "base_rate": "0.265190"
+      },
+      "upstream": {
+        "roc_auc": "0.846001",
+        "pr_auc": "0.656070",
+        "top_decile_lift": "2.806733",
+        "top_decile_positive_rate": "0.744318",
+        "base_rate": "0.265190"
+      },
+      "equal": true
+    }
+  },
+  "matches_upstream_metrics_at_six_decimals": true,
+  "dataset_fields_source": "copied from upstream reports/metrics.json dataset",
+  "dataset_sha256": "16320c9c1ec72448db59aa0a26a0b95401046bef5d02fd3aeb906448e3055e91",
+  "dataset_n_rows": 7043,
+  "dataset_churn_rate": 0.265370
+}
