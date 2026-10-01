@@ -1,5 +1,9 @@
 # Responsible AI pack
 
+![Held-out ROC-AUC, PR-AUC, and top-decile lift against the CI floors](assets/hero.png)
+
+*Held-out metrics for the dummy prior, logistic regression, and the scoring gradient boosting model. Floors are the CI gates. Rendered from `reports/metrics_recomputed.json` and `reports/gate_check.json` with `scripts/render_readme_assets.py`.*
+
 [![CI](https://github.com/ChristopherKiokoStrathmore/responsible-ai-pack/actions/workflows/ci.yml/badge.svg)](https://github.com/ChristopherKiokoStrathmore/responsible-ai-pack/actions/workflows/ci.yml)
 [![Python 3.12](https://img.shields.io/badge/python-3.12-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
@@ -106,6 +110,10 @@ Overall, 467 of 1761 held-out rows are positive (rate 0.265190). The selection r
 | SeniorCitizen 0 | 1475 | 0.233898 | 0.161356 | 0.455072 | 0.071681 | 0.845995 |
 | SeniorCitizen 1 | 286 | 0.426573 | 0.384615 | 0.622951 | 0.207317 | 0.800680 |
 
+![Held-out group rates and disparity](assets/fairness_rates.png)
+
+*Label rate, selection rate, false positive rate, and ROC-AUC by gender and SeniorCitizen, plus demographic parity and equalized odds differences. Rendered from `reports/fairness.json` with `scripts/render_readme_assets.py`.*
+
 Gender: demographic parity difference 0.030582, equalized odds difference 0.020532. The two groups are close on every rate in the table. Mean absolute SHAP for gender is 0.019143.
 
 SeniorCitizen: demographic parity difference 0.223259, equalized odds difference 0.167878. Value 1 is a smaller group and a higher churn rate (0.426573 against 0.233898). The selection-rate gap lines up with that base rate, and it is not only a base-rate gap: the false-positive rate is 0.207317 against 0.071681, and ROC-AUC is 0.800680 against 0.845995.
@@ -124,6 +132,10 @@ Global plots are in the encoded column space the booster sees. The bar ranks mea
 
 Summed to original fields, mean absolute SHAP is Contract 0.837003, tenure 0.355529, OnlineSecurity 0.241598, TechSupport 0.212835, and MonthlyCharges 0.204335. That sum is the sum of the encoded columns' mean absolute values, not the mean absolute of a sum.
 
+![Mean absolute SHAP by original field](assets/shap_original.png)
+
+*Mean absolute SHAP summed to original fields on the held-out rows. Rendered from `reports/shap_summary.json` with `scripts/render_readme_assets.py`.*
+
 Local plots add the signed values back into the original field and label the bar with the raw value. They are explanations of this model, not causes.
 
 | Customer | Why this row | Historical Churn | P(Churn=Yes) | Largest original field |
@@ -141,6 +153,10 @@ Local plots add the signed values back into the original field and label the bar
 ### Drift baseline
 
 PSI on this stratified split is small. That is a check that the function runs, not evidence about a later month. The review trigger is 0.250000. Nothing in `reports/drift_psi.json` is above it (`n_above_trigger` is 0). The largest value is MonthlyCharges at 0.012474. The full table is in `MONITORING.md`.
+
+![Population stability index by feature](assets/drift_psi.png)
+
+*PSI between the training split and the held-out split. The review trigger is 0.250000 and `n_above_trigger` is 0. Rendered from `reports/drift_psi.json` with `scripts/render_readme_assets.py`.*
 
 ## Deployment
 
