@@ -15,7 +15,7 @@ Governance write-up for the churn model saved in [telco-churn-nba-engine](https:
 
 ## Model details
 
-- Author of the portfolio: Chris Nguu.
+- Author of the portfolio: Christopher Nguu.
 - Scoring artifact: `artifacts/churn_model.joblib` in the upstream repo. SHA-256 `fe1cd3c3ea69565c133f9964744c9d4f5d55908ef883908cfb380f1fc37d3509`, checked by `upstream.lock.json`.
 - Loader: `telco_nba.model_io.load_churn_model`, documented in the upstream file [`src/telco_nba/model_io.py`](https://github.com/ChristopherKiokoStrathmore/telco-churn-nba-engine/blob/21f6115931f4358ebc7cc87d9ba1f4d87fd015aa/src/telco_nba/model_io.py).
 - Model: scikit-learn `GradientBoostingClassifier` inside a `Pipeline`. The pipeline's `predict_proba(frame)[:, 1]` is P(Churn=Yes). Classes are `[0, 1]`.
