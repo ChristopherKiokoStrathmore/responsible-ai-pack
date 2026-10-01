@@ -1,8 +1,20 @@
 # Responsible AI pack
 
+[![CI](https://github.com/ChristopherKiokoStrathmore/responsible-ai-pack/actions/workflows/ci.yml/badge.svg)](https://github.com/ChristopherKiokoStrathmore/responsible-ai-pack/actions/workflows/ci.yml)
+[![Python 3.12](https://img.shields.io/badge/python-3.12-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 A churn model is only useful if people can trust it. What does it rely on, is it fair across customer groups, and what happens when it degrades?
 
 This repo adds governance to the churn model from [telco-churn-nba-engine](https://github.com/ChristopherKiokoStrathmore/telco-churn-nba-engine) (pinned commit): TreeSHAP explanations, Fairlearn fairness checks, PSI drift baseline, model cards, a NIST AI RMF checklist, monitoring plan, incident runbook and CI metric gates. Part of an independent portfolio series on telecom customer analytics, built alongside my MSc in Data Science. Structured using CRISP-DM.
+
+## Findings at a glance
+
+From `reports/fairness.json` on the held-out split:
+
+- Demographic parity difference is 0.030582 for gender and 0.223259 for SeniorCitizen.
+- The false positive rate is 0.207317 for SeniorCitizen 1 and 0.071681 for SeniorCitizen 0.
+- ROC-AUC is 0.800680 for SeniorCitizen 1 and 0.845995 for SeniorCitizen 0.
 
 ## Key results
 
@@ -32,6 +44,8 @@ The score is useful only if a reviewer can see what the model relies on, how it 
 ## Data Understanding
 
 Repository: [telco-churn-nba-engine](https://github.com/ChristopherKiokoStrathmore/telco-churn-nba-engine), commit `21f6115931f4358ebc7cc87d9ba1f4d87fd015aa`.
+
+The pinned telco-churn-nba-engine commit (21f6115) is deliberate: later commits there changed docs only, not the model.
 
 That repo has no `pyproject.toml` or `setup.py`, so this pack does not install it as a git dependency. `scripts/fetch_upstream.py` downloads the archive at that commit and checks the SHA-256 of each file in the lock, including `artifacts/churn_model.joblib`, `artifacts/scoring_bundle.joblib`, the CSV, and `reports/metrics.json`.
 
@@ -94,7 +108,7 @@ Overall, 467 of 1761 held-out rows are positive (rate 0.265190). The selection r
 
 Gender: demographic parity difference 0.030582, equalized odds difference 0.020532. The two groups are close on every rate in the table. Mean absolute SHAP for gender is 0.019143.
 
-SeniorCitizen: demographic parity difference 0.223259, equalized odds difference 0.167878. Value 1 is a smaller group and a higher churn rate (0.426573 against 0.233898). The selection-rate gap lines up with that base rate, and it is not only a base-rate gap: the false-positive rate is 0.207317 against 0.071681, and ROC-AUC is 0.800680 against 0.845995. Mean absolute SHAP for SeniorCitizen is 0.044300, which is small next to Contract and large next to the parity gap. The column can affect a score without dominating the average absolute contribution.
+SeniorCitizen: demographic parity difference 0.223259, equalized odds difference 0.167878. Value 1 is a smaller group and a higher churn rate (0.426573 against 0.233898). The selection-rate gap lines up with that base rate, and it is not only a base-rate gap: the false-positive rate is 0.207317 against 0.071681, and ROC-AUC is 0.800680 against 0.845995.
 
 These are measurements on one split and one cutoff. They are not a CI gate and not a fairness certificate. A disparity budget needs an owner this pack does not have.
 
@@ -150,6 +164,8 @@ The margin is wide enough that six-decimal noise does not fail CI, and narrow en
 
 ### Run
 
+Requires Python 3.12 (the pinned shap version does not build on 3.13).
+
 ```bash
 python -m venv .venv
 source .venv/bin/activate
@@ -160,11 +176,20 @@ pytest
 python scripts/check_gates.py
 ```
 
+`make install`, `make test`, and `make gates` cover the install, pytest, and gate check.
+
 CI uses Python 3.12, installs `requirements.txt` (scikit-learn 1.5.2, shap 0.47.2, fairlearn 0.12.0), fetches the lock, runs pytest, and reruns `scripts/check_gates.py`.
 
 ## Data and scope
 
 Independent portfolio project built on public data. The churn table is the public IBM Telco Customer Churn sample, pinned from the upstream repo.
+
+## Related projects in this series
+
+- [telco-churn-nba-engine](https://github.com/ChristopherKiokoStrathmore/telco-churn-nba-engine)
+- [omnichannel-care-analytics](https://github.com/ChristopherKiokoStrathmore/omnichannel-care-analytics)
+- [care-automation-roi](https://github.com/ChristopherKiokoStrathmore/care-automation-roi)
+- [digital-care-roadmap](https://github.com/ChristopherKiokoStrathmore/digital-care-roadmap)
 
 ## Limitations
 
