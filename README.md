@@ -1,5 +1,7 @@
 # Responsible AI pack
 
+**[Live demo](https://responsible-ai-pack.vercel.app)**
+
 ![A churn score flags senior customers more often. This pack explains scores, measures group rates, checks drift, and gates the held-out metrics.](assets/hero.png)
 
 [![CI](https://github.com/ChristopherKiokoStrathmore/responsible-ai-pack/actions/workflows/ci.yml/badge.svg)](https://github.com/ChristopherKiokoStrathmore/responsible-ai-pack/actions/workflows/ci.yml)
@@ -16,7 +18,7 @@ Interactive pages for this pack live in [`web/`](web/) (Next.js, App Router). On
 
 The pages reprint the committed holdout: scope, fairness, TreeSHAP, drift, and the governance checklist. They do not invent a metric.
 
-Live demo: placeholder. Replace this sentence with the deployment URL after the first publish.
+Live demo: [https://responsible-ai-pack.vercel.app](https://responsible-ai-pack.vercel.app)
 
 ## Findings at a glance
 
