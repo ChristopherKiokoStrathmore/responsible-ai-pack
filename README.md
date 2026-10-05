@@ -1,5 +1,7 @@
 # Responsible AI pack
 
+**[Live demo](https://responsible-ai-pack.vercel.app/demo)**
+
 ![A churn score flags senior customers more often. This pack explains scores, measures group rates, checks drift, and gates the held-out metrics.](assets/hero.png)
 
 [![CI](https://github.com/ChristopherKiokoStrathmore/responsible-ai-pack/actions/workflows/ci.yml/badge.svg)](https://github.com/ChristopherKiokoStrathmore/responsible-ai-pack/actions/workflows/ci.yml)
