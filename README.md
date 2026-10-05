@@ -12,11 +12,9 @@ This repo adds governance to the churn model from [telco-churn-nba-engine](https
 
 ## Live demo
 
-Interactive pages for this pack live in [`web/`](web/) (Next.js, App Router). On Vercel, set the project Root Directory to `web`.
+Interactive review: [https://responsible-ai-pack.vercel.app/demo](https://responsible-ai-pack.vercel.app/demo). Move the fairness cutoff, turn published TreeSHAP contributions on or off for the local customers, and shift a drift bin. Reset returns the committed holdout. The pages do not invent a metric.
 
-The pages reprint the committed holdout: scope, fairness, TreeSHAP, drift, and the governance checklist. They do not invent a metric.
-
-Live demo: placeholder. Replace this sentence with the deployment URL after the first publish.
+The write-up stays at [https://responsible-ai-pack.vercel.app/](https://responsible-ai-pack.vercel.app/). The app lives in [`web/`](web/) (Next.js, App Router). On Vercel, set the project Root Directory to `web`.
 
 ## Findings at a glance
 

@@ -10,6 +10,9 @@ export function SiteFooter() {
       </p>
       <ul>
         <li>
+          <a href="/demo">Interactive demo</a>
+        </li>
+        <li>
           <a href={links.pack}>responsible-ai-pack</a>
         </li>
         <li>

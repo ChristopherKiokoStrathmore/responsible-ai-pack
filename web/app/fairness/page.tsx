@@ -34,6 +34,10 @@ export default function FairnessPage() {
           for gender. Both fields are model inputs. This is one split and one cutoff.
         </p>
         <p className="stamp">Not a fairness certificate</p>
+        <p>
+          <a href="/demo#fairness">Move this cutoff in the demo</a>. The tables below stay on the
+          published threshold.
+        </p>
       </header>
 
       <section className="wrap" aria-labelledby="gaps">

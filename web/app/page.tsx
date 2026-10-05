@@ -17,6 +17,12 @@ export default function HomePage() {
           This is a reading of the gradient-boosting churn model pinned from telco-churn-nba-engine.
           The pack does not train a replacement. Nothing below was measured again for this page.
         </p>
+        <div className="cta-row">
+          <a className="cta" href="/demo">
+            Open the interactive demo
+          </a>
+          <a href="#findings">Keep reading the write-up</a>
+        </div>
         <div className="disclaimer">
           <p>
             Independent portfolio project built on public data. The holdout is{" "}
@@ -176,6 +182,10 @@ export default function HomePage() {
         <h2>PSI on one split is not a later month.</h2>
         <p>{drift.note}</p>
         <p>
+          <a href="/demo#drift">Shift a bin in the demo</a>. The chart below stays on the published
+          counts.
+        </p>
+        <p>
           Reference: {drift.reference}. Current: {drift.current}. n_train {count(drift.nTrain)},
           n_test {count(drift.nTest)}. Review trigger {six(drift.trigger)}. n_above_trigger{" "}
           {count(drift.nAboveTrigger)}. The largest value is {largestDrift.name} at{" "}
@@ -219,6 +229,15 @@ export default function HomePage() {
         </p>
         <h2>Continue the reading.</h2>
         <ul className="index-list">
+          <li>
+            <a href="/demo">
+              <span className="index-no">Live</span>
+              <span>
+                <strong>Interactive demo</strong>
+                Move the cutoff, turn a TreeSHAP contribution off, and shift a drift bin.
+              </span>
+            </a>
+          </li>
           <li>
             <a href="/fairness">
               <span className="index-no">01</span>

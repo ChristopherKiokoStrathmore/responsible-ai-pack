@@ -21,6 +21,10 @@ export default function ExplanationsPage() {
           the values plus the base value {six(shap.baseValue)} rebuild decision_function with max
           absolute error {six(shap.maxAbsReconstructionError)}.
         </p>
+        <p>
+          <a href="/demo#explanations">Turn a local contribution off in the demo</a>. The figures
+          below stay on the published values.
+        </p>
       </header>
 
       <section className="wrap" aria-labelledby="global">
