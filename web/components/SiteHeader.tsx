@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const LINKS = [
+  { href: "/demo", label: "Demo" },
   { href: "/", label: "Scope" },
   { href: "/fairness", label: "Fairness" },
   { href: "/explanations", label: "Explanations" },
@@ -25,7 +26,7 @@ export function SiteHeader() {
       <nav aria-label="Pages">
         <ul className="nav">
           {LINKS.map((link) => {
-            const current = link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
+            const current = link.href === "/" ? pathname === "/" : pathname === link.href || pathname.startsWith(`${link.href}/`);
             return (
               <li key={link.href}>
                 <Link href={link.href} aria-current={current ? "page" : undefined}>

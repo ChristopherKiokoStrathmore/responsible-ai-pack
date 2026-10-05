@@ -1,6 +1,6 @@
 # Responsible AI pack
 
-**[Live demo](https://responsible-ai-pack.vercel.app)**
+**[Live demo](https://responsible-ai-pack.vercel.app/demo)**
 
 ![A churn score flags senior customers more often. This pack explains scores, measures group rates, checks drift, and gates the held-out metrics.](assets/hero.png)
 
@@ -14,11 +14,9 @@ This repo adds governance to the churn model from [telco-churn-nba-engine](https
 
 ## Live demo
 
-Interactive pages for this pack live in [`web/`](web/) (Next.js, App Router). On Vercel, set the project Root Directory to `web`.
+Interactive review: [https://responsible-ai-pack.vercel.app/demo](https://responsible-ai-pack.vercel.app/demo). Move the fairness cutoff, turn published TreeSHAP contributions on or off for the local customers, and shift a drift bin. Reset returns the committed holdout. The pages do not invent a metric.
 
-The pages reprint the committed holdout: scope, fairness, TreeSHAP, drift, and the governance checklist. They do not invent a metric.
-
-Live demo: [https://responsible-ai-pack.vercel.app](https://responsible-ai-pack.vercel.app)
+The write-up stays at [https://responsible-ai-pack.vercel.app/](https://responsible-ai-pack.vercel.app/). The app lives in [`web/`](web/) (Next.js, App Router). On Vercel, set the project Root Directory to `web`.
 
 ## Findings at a glance
 
