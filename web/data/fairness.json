@@ -1,0 +1,70 @@
+{
+  "scoring_model": "gradient_boosting",
+  "split": "telco_nba.pipeline.split_customers seed 42 test_size 0.25 stratify Churn",
+  "n_test": 1761,
+  "hard_label_rule": "Positive when the saved pipeline's predict() returns class 1, which is when P(Churn=Yes) > 0.5. An exact tie stays class 0.",
+  "roc_auc_input": "P(Churn=Yes) from predict_proba, not the hard label",
+  "demographic_parity_difference": "Absolute difference between the largest and smallest group selection rates, as returned by fairlearn.metrics.demographic_parity_difference.",
+  "equalized_odds_difference": "The larger of the absolute true-positive-rate gap and the absolute false-positive-rate gap across groups, as returned by fairlearn.metrics.equalized_odds_difference.",
+  "fields_are_model_inputs": {
+    "gender": true,
+    "SeniorCitizen": true
+  },
+  "attributes_not_in_the_table": "The IBM CSV has no race, ethnicity, region, language, or disability column. This check does not cover them.",
+  "by_field": {
+    "gender": {
+      "groups": {
+        "Female": {
+          "n": 863,
+          "n_positive": 240,
+          "positive_rate": 0.278100,
+          "selection_rate": 0.213210,
+          "true_positive_rate": 0.508333,
+          "false_positive_rate": 0.099518,
+          "roc_auc": 0.839811
+        },
+        "Male": {
+          "n": 898,
+          "n_positive": 227,
+          "positive_rate": 0.252784,
+          "selection_rate": 0.182628,
+          "true_positive_rate": 0.488987,
+          "false_positive_rate": 0.078987,
+          "roc_auc": 0.851937
+        }
+      },
+      "demographic_parity_difference": 0.030582,
+      "equalized_odds_difference": 0.020532
+    },
+    "SeniorCitizen": {
+      "groups": {
+        "0": {
+          "n": 1475,
+          "n_positive": 345,
+          "positive_rate": 0.233898,
+          "selection_rate": 0.161356,
+          "true_positive_rate": 0.455072,
+          "false_positive_rate": 0.071681,
+          "roc_auc": 0.845995
+        },
+        "1": {
+          "n": 286,
+          "n_positive": 122,
+          "positive_rate": 0.426573,
+          "selection_rate": 0.384615,
+          "true_positive_rate": 0.622951,
+          "false_positive_rate": 0.207317,
+          "roc_auc": 0.800680
+        }
+      },
+      "demographic_parity_difference": 0.223259,
+      "equalized_odds_difference": 0.167878
+    }
+  },
+  "overall": {
+    "n": 1761,
+    "n_positive": 467,
+    "positive_rate": 0.265190,
+    "selection_rate": 0.197615
+  }
+}

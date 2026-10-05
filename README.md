@@ -10,6 +10,14 @@ A churn model is only useful if people can trust it. What does it rely on, is it
 
 This repo adds governance to the churn model from [telco-churn-nba-engine](https://github.com/ChristopherKiokoStrathmore/telco-churn-nba-engine) (pinned commit): TreeSHAP explanations, Fairlearn fairness checks, PSI drift baseline, model cards, a NIST AI RMF checklist, monitoring plan, incident runbook and CI metric gates. Part of an independent portfolio series on telecom customer analytics, built alongside my MSc in Data Science. Structured using CRISP-DM.
 
+## Live demo
+
+Interactive pages for this pack live in [`web/`](web/) (Next.js, App Router). On Vercel, set the project Root Directory to `web`.
+
+The pages reprint the committed holdout: scope, fairness, TreeSHAP, drift, and the governance checklist. They do not invent a metric.
+
+Live demo: placeholder. Replace this sentence with the deployment URL after the first publish.
+
 ## Findings at a glance
 
 From `reports/fairness.json` on the held-out split:

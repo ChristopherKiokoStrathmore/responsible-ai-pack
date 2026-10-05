@@ -1,0 +1,253 @@
+{
+  "reference": "training rows from telco_nba.pipeline.split_customers",
+  "current": "held-out rows from the same split",
+  "comparison_note": "The two slices are a stratified random split of one public table, not two time periods. A small PSI here checks the function. A production monitor would keep this training split as the reference and pass a later batch as the current sample.",
+  "psi_review_trigger": 0.250000,
+  "clip_floor": 0.000001,
+  "requested_numeric_bins": 10,
+  "n_train": 5282,
+  "n_test": 1761,
+  "n_above_trigger": 0,
+  "features": [
+    {
+      "name": "tenure",
+      "kind": "numeric",
+      "edges": [
+        0.000000,
+        2.000000,
+        6.000000,
+        12.000000,
+        19.000000,
+        29.000000,
+        39.600000,
+        50.000000,
+        61.000000,
+        69.000000,
+        72.000000
+      ],
+      "missing_bin": "last count is non-finite values, including blank TotalCharges",
+      "reference_counts": [
+        470,
+        566,
+        524,
+        513,
+        548,
+        548,
+        488,
+        564,
+        491,
+        570,
+        0
+      ],
+      "current_counts": [
+        154,
+        181,
+        174,
+        152,
+        215,
+        177,
+        160,
+        202,
+        170,
+        176,
+        0
+      ],
+      "psi": 0.005914,
+      "above_trigger": false
+    },
+    {
+      "name": "MonthlyCharges",
+      "kind": "numeric",
+      "edges": [
+        18.400000,
+        20.100000,
+        25.100000,
+        45.565000,
+        58.870000,
+        70.500000,
+        79.280000,
+        85.635000,
+        94.400000,
+        103.050000,
+        118.750000
+      ],
+      "missing_bin": "last count is non-finite values, including blank TotalCharges",
+      "reference_counts": [
+        528,
+        523,
+        534,
+        528,
+        526,
+        530,
+        528,
+        524,
+        531,
+        530,
+        0
+      ],
+      "current_counts": [
+        188,
+        180,
+        137,
+        200,
+        200,
+        184,
+        157,
+        179,
+        173,
+        162,
+        0
+      ],
+      "psi": 0.012474,
+      "above_trigger": false
+    },
+    {
+      "name": "TotalCharges",
+      "kind": "numeric",
+      "edges": [
+        18.850000,
+        84.430000,
+        265.600000,
+        546.810000,
+        929.220000,
+        1387.400000,
+        2077.600000,
+        3196.260000,
+        4511.940000,
+        6003.830000,
+        8684.800000
+      ],
+      "missing_bin": "last count is non-finite values, including blank TotalCharges",
+      "reference_counts": [
+        528,
+        527,
+        527,
+        528,
+        527,
+        527,
+        528,
+        527,
+        527,
+        528,
+        8
+      ],
+      "current_counts": [
+        171,
+        173,
+        171,
+        157,
+        186,
+        213,
+        193,
+        158,
+        173,
+        162,
+        3
+      ],
+      "psi": 0.008491,
+      "above_trigger": false
+    },
+    {
+      "name": "Contract",
+      "kind": "categorical",
+      "levels": [
+        "Month-to-month",
+        "One year",
+        "Two year"
+      ],
+      "reference_counts": [
+        2907,
+        1107,
+        1268
+      ],
+      "current_counts": [
+        968,
+        366,
+        427
+      ],
+      "psi": 0.000040,
+      "above_trigger": false
+    },
+    {
+      "name": "InternetService",
+      "kind": "categorical",
+      "levels": [
+        "DSL",
+        "Fiber optic",
+        "No"
+      ],
+      "reference_counts": [
+        1816,
+        2323,
+        1143
+      ],
+      "current_counts": [
+        605,
+        773,
+        383
+      ],
+      "psi": 0.000007,
+      "above_trigger": false
+    },
+    {
+      "name": "PaymentMethod",
+      "kind": "categorical",
+      "levels": [
+        "Bank transfer (automatic)",
+        "Credit card (automatic)",
+        "Electronic check",
+        "Mailed check"
+      ],
+      "reference_counts": [
+        1171,
+        1132,
+        1772,
+        1207
+      ],
+      "current_counts": [
+        373,
+        390,
+        593,
+        405
+      ],
+      "psi": 0.000700,
+      "above_trigger": false
+    },
+    {
+      "name": "gender",
+      "kind": "categorical",
+      "levels": [
+        "Female",
+        "Male"
+      ],
+      "reference_counts": [
+        2625,
+        2657
+      ],
+      "current_counts": [
+        863,
+        898
+      ],
+      "psi": 0.000191,
+      "above_trigger": false
+    },
+    {
+      "name": "SeniorCitizen",
+      "kind": "categorical",
+      "levels": [
+        "0",
+        "1"
+      ],
+      "reference_counts": [
+        4426,
+        856
+      ],
+      "current_counts": [
+        1475,
+        286
+      ],
+      "psi": 0.000001,
+      "above_trigger": false
+    }
+  ]
+}
