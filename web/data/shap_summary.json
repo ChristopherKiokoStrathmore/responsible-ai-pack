@@ -1,0 +1,394 @@
+{
+  "method": "shap.TreeExplainer on the gradient-boosting classifier inside the saved pipeline",
+  "output_units": "decision_function log-odds of P(Churn=Yes)",
+  "n_explained": 1761,
+  "n_encoded_features": 46,
+  "base_value": -1.556380,
+  "max_abs_reconstruction_error": 0.000000,
+  "global_summary_plot": "reports/shap/global_summary.png",
+  "global_bar_plot": "reports/shap/global_bar.png",
+  "global_plot_space": "one-hot and scaled columns seen by the booster",
+  "local_plot_space": "Signed SHAP values summed within each original field. The plot label is field=raw value. The plotted bar is not a causal effect.",
+  "original_feature_aggregation": "Mean absolute SHAP of an original field is the sum of the mean absolute SHAP of its encoded columns.",
+  "mean_abs_shap_encoded": [
+    {
+      "feature": "cat__Contract_Month-to-month",
+      "mean_abs_shap": 0.643924
+    },
+    {
+      "feature": "num__tenure",
+      "mean_abs_shap": 0.355529
+    },
+    {
+      "feature": "cat__OnlineSecurity_No",
+      "mean_abs_shap": 0.241598
+    },
+    {
+      "feature": "cat__TechSupport_No",
+      "mean_abs_shap": 0.205514
+    },
+    {
+      "feature": "num__MonthlyCharges",
+      "mean_abs_shap": 0.204335
+    },
+    {
+      "feature": "cat__InternetService_Fiber optic",
+      "mean_abs_shap": 0.201420
+    },
+    {
+      "feature": "cat__Contract_Two year",
+      "mean_abs_shap": 0.156466
+    },
+    {
+      "feature": "num__TotalCharges",
+      "mean_abs_shap": 0.155191
+    },
+    {
+      "feature": "cat__PaymentMethod_Electronic check",
+      "mean_abs_shap": 0.136840
+    },
+    {
+      "feature": "cat__OnlineBackup_No",
+      "mean_abs_shap": 0.112431
+    },
+    {
+      "feature": "cat__MultipleLines_No",
+      "mean_abs_shap": 0.082458
+    },
+    {
+      "feature": "cat__StreamingMovies_Yes",
+      "mean_abs_shap": 0.065884
+    },
+    {
+      "feature": "cat__PaperlessBilling_No",
+      "mean_abs_shap": 0.065285
+    },
+    {
+      "feature": "cat__PaperlessBilling_Yes",
+      "mean_abs_shap": 0.055462
+    },
+    {
+      "feature": "cat__StreamingTV_Yes",
+      "mean_abs_shap": 0.048930
+    },
+    {
+      "feature": "cat__Contract_One year",
+      "mean_abs_shap": 0.036613
+    },
+    {
+      "feature": "cat__SeniorCitizen_0",
+      "mean_abs_shap": 0.023201
+    },
+    {
+      "feature": "cat__SeniorCitizen_1",
+      "mean_abs_shap": 0.021099
+    },
+    {
+      "feature": "cat__Dependents_No",
+      "mean_abs_shap": 0.019669
+    },
+    {
+      "feature": "cat__Dependents_Yes",
+      "mean_abs_shap": 0.013175
+    },
+    {
+      "feature": "cat__gender_Female",
+      "mean_abs_shap": 0.012660
+    },
+    {
+      "feature": "cat__TechSupport_Yes",
+      "mean_abs_shap": 0.007320
+    },
+    {
+      "feature": "cat__gender_Male",
+      "mean_abs_shap": 0.006484
+    },
+    {
+      "feature": "cat__MultipleLines_Yes",
+      "mean_abs_shap": 0.005333
+    },
+    {
+      "feature": "cat__DeviceProtection_Yes",
+      "mean_abs_shap": 0.005063
+    },
+    {
+      "feature": "cat__StreamingMovies_No",
+      "mean_abs_shap": 0.004158
+    },
+    {
+      "feature": "cat__PaymentMethod_Mailed check",
+      "mean_abs_shap": 0.002756
+    },
+    {
+      "feature": "cat__OnlineBackup_Yes",
+      "mean_abs_shap": 0.002182
+    },
+    {
+      "feature": "cat__StreamingTV_No",
+      "mean_abs_shap": 0.001158
+    },
+    {
+      "feature": "cat__PaymentMethod_Bank transfer (automatic)",
+      "mean_abs_shap": 0.001042
+    },
+    {
+      "feature": "cat__PaymentMethod_Credit card (automatic)",
+      "mean_abs_shap": 0.000883
+    },
+    {
+      "feature": "cat__Partner_Yes",
+      "mean_abs_shap": 0.000225
+    },
+    {
+      "feature": "cat__PhoneService_No",
+      "mean_abs_shap": 0.000217
+    },
+    {
+      "feature": "cat__DeviceProtection_No internet service",
+      "mean_abs_shap": 0.000158
+    },
+    {
+      "feature": "cat__Partner_No",
+      "mean_abs_shap": 0.000097
+    },
+    {
+      "feature": "cat__InternetService_No",
+      "mean_abs_shap": 0.000056
+    },
+    {
+      "feature": "cat__InternetService_DSL",
+      "mean_abs_shap": 0.000043
+    },
+    {
+      "feature": "cat__OnlineSecurity_No internet service",
+      "mean_abs_shap": 0.000000
+    },
+    {
+      "feature": "cat__PhoneService_Yes",
+      "mean_abs_shap": 0.000000
+    },
+    {
+      "feature": "cat__MultipleLines_No phone service",
+      "mean_abs_shap": 0.000000
+    },
+    {
+      "feature": "cat__TechSupport_No internet service",
+      "mean_abs_shap": 0.000000
+    },
+    {
+      "feature": "cat__DeviceProtection_No",
+      "mean_abs_shap": 0.000000
+    },
+    {
+      "feature": "cat__OnlineSecurity_Yes",
+      "mean_abs_shap": 0.000000
+    },
+    {
+      "feature": "cat__OnlineBackup_No internet service",
+      "mean_abs_shap": 0.000000
+    },
+    {
+      "feature": "cat__StreamingTV_No internet service",
+      "mean_abs_shap": 0.000000
+    },
+    {
+      "feature": "cat__StreamingMovies_No internet service",
+      "mean_abs_shap": 0.000000
+    }
+  ],
+  "mean_abs_shap_by_original_feature": [
+    {
+      "feature": "Contract",
+      "mean_abs_shap": 0.837003
+    },
+    {
+      "feature": "tenure",
+      "mean_abs_shap": 0.355529
+    },
+    {
+      "feature": "OnlineSecurity",
+      "mean_abs_shap": 0.241598
+    },
+    {
+      "feature": "TechSupport",
+      "mean_abs_shap": 0.212835
+    },
+    {
+      "feature": "MonthlyCharges",
+      "mean_abs_shap": 0.204335
+    },
+    {
+      "feature": "InternetService",
+      "mean_abs_shap": 0.201518
+    },
+    {
+      "feature": "TotalCharges",
+      "mean_abs_shap": 0.155191
+    },
+    {
+      "feature": "PaymentMethod",
+      "mean_abs_shap": 0.141521
+    },
+    {
+      "feature": "PaperlessBilling",
+      "mean_abs_shap": 0.120747
+    },
+    {
+      "feature": "OnlineBackup",
+      "mean_abs_shap": 0.114613
+    },
+    {
+      "feature": "MultipleLines",
+      "mean_abs_shap": 0.087791
+    },
+    {
+      "feature": "StreamingMovies",
+      "mean_abs_shap": 0.070041
+    },
+    {
+      "feature": "StreamingTV",
+      "mean_abs_shap": 0.050088
+    },
+    {
+      "feature": "SeniorCitizen",
+      "mean_abs_shap": 0.044300
+    },
+    {
+      "feature": "Dependents",
+      "mean_abs_shap": 0.032844
+    },
+    {
+      "feature": "gender",
+      "mean_abs_shap": 0.019143
+    },
+    {
+      "feature": "DeviceProtection",
+      "mean_abs_shap": 0.005221
+    },
+    {
+      "feature": "Partner",
+      "mean_abs_shap": 0.000321
+    },
+    {
+      "feature": "PhoneService",
+      "mean_abs_shap": 0.000217
+    }
+  ],
+  "local_customers": [
+    {
+      "customer_id": "5343-SGUBI",
+      "row_index": 0,
+      "selection_reason": "first_held_out_row_with_numeric_TotalCharges",
+      "historical_churn": "No",
+      "churn_probability": 0.122990,
+      "decision_function": -1.964413,
+      "shap_base_value": -1.556380,
+      "shap_sum": -0.408033,
+      "top_original_features": [
+        {
+          "feature": "Contract",
+          "value": "One year",
+          "shap": -0.511087
+        },
+        {
+          "feature": "OnlineSecurity",
+          "value": "No",
+          "shap": 0.332220
+        },
+        {
+          "feature": "tenure",
+          "value": "52",
+          "shap": -0.288727
+        },
+        {
+          "feature": "TechSupport",
+          "value": "No",
+          "shap": 0.191892
+        },
+        {
+          "feature": "PaymentMethod",
+          "value": "Mailed check",
+          "shap": -0.145604
+        }
+      ],
+      "plot": "reports/shap/local_5343-SGUBI.png"
+    },
+    {
+      "customer_id": "0295-PPHDO",
+      "row_index": 605,
+      "selection_reason": "highest_held_out_churn_probability",
+      "historical_churn": "Yes",
+      "churn_probability": 0.924460,
+      "decision_function": 2.504547,
+      "shap_base_value": -1.556380,
+      "shap_sum": 4.060927,
+      "top_original_features": [
+        {
+          "feature": "Contract",
+          "value": "Month-to-month",
+          "shap": 0.870800
+        },
+        {
+          "feature": "tenure",
+          "value": "1",
+          "shap": 0.809561
+        },
+        {
+          "feature": "TotalCharges",
+          "value": "95.45",
+          "shap": 0.549386
+        },
+        {
+          "feature": "MonthlyCharges",
+          "value": "95.45",
+          "shap": 0.431438
+        },
+        {
+          "feature": "TechSupport",
+          "value": "No",
+          "shap": 0.258992
+        }
+      ],
+      "plot": "reports/shap/local_0295-PPHDO.png"
+    },
+    {
+      "customer_id": "5787-KXGIY",
+      "row_index": 1337,
+      "selection_reason": "lowest_held_out_churn_probability",
+      "historical_churn": "No",
+      "churn_probability": 0.006431,
+      "decision_function": -5.040222,
+      "shap_base_value": -1.556380,
+      "shap_sum": -3.483842,
+      "top_original_features": [
+        {
+          "feature": "Contract",
+          "value": "Two year",
+          "shap": -0.886617
+        },
+        {
+          "feature": "tenure",
+          "value": "72",
+          "shap": -0.849015
+        },
+        {
+          "feature": "MonthlyCharges",
+          "value": "19.3",
+          "shap": -0.611293
+        },
+        {
+          "feature": "TechSupport",
+          "value": "No internet service",
+          "shap": -0.300676
+        },
+        {
+          "feature": "OnlineSecurity",
+          "value": "No internet service",
+          "shap": -0.211888
+        }
+      ],
+      "plot": "reports/shap/local_5787-KXGIY.png"
+    }
+  ],
+  "example_customer_id_from_split": "5343-SGUBI"
+}
